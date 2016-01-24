@@ -1,0 +1,30 @@
+{% set mariadb = salt['grains.filter_by']({
+    'default': {
+        'server': 'mariadb-server',
+        'client': 'mariadb-client',
+        'service': 'mysql',
+        'service_provider': 'service',
+        'config': '/etc/mysql/my.cnf',
+        'repo_version': '10.1'
+    },
+    'Debian': {
+        'server': 'mariadb-server',
+        'client': 'mariadb-client',
+        'service': 'mysql',
+        'service_provider': 'service',
+        'repo': 'http://ftp.osuosl.org/pub/mariadb/repo/',
+        'repo_dir': 'debian',
+        'repo_version': '10.1'
+    },
+    'RedHat': {
+        'server': 'MariaDB-server',
+        'client': 'MariaDB-client',
+        'service': 'mysqld',
+        'service_provider': 'service',
+        'repo': 'http://yum.mariadb.org/',
+        'repo_dir': 'centos7-amd64',
+        'repo_version': '10.1',
+        'config': '/etc/my.cnf'
+    }
+},
+merge=salt['pillar.get']('mariadb:lookup'), default='default') %}
