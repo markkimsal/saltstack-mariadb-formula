@@ -12,7 +12,7 @@ install-mariadb:
 get-mariadb-repo:
   pkgrepo.managed:
     - humanname: MariaDB Repo
-    - name: deb {{ mariadb.repo }}{{ mariadb.repo_version }}/ubuntu {{ salt['grains.get']('oscodename', 'trusty') }} main
+    - name: deb {{ mariadb.repo }}{{ mariadb.repo_version }}/ubuntu/ {{ salt['grains.get']('oscodename', 'trusty') }} main
     - keyserver: keyserver.ubuntu.com
     - keyid: 1BB943DB
     - refresh_db: True
@@ -23,7 +23,7 @@ get-mariadb-repo:
 get-mariadb-repo:
   pkgrepo.managed:
     - humanname: MariaDB Repo
-    - name: deb {{ mariadb.repo }}{{ mariadb.repo_version }}/debian {{ salt['grains.get']('oscodename', 'trusty') }} main
+    - name: deb {{ mariadb.repo }}{{ mariadb.repo_version }}/debian/ {{ salt['grains.get']('oscodename', 'trusty') }} main
     - keyserver: keyserver.ubuntu.com
     - keyid: 1BB943DB
     - refresh_db: True
